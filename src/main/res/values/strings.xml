@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">Journey</string>
-    <string-array name="spinner_items">
-        <item>My travel diary</item>
-        <item>Global country rankings</item>
-        <item>My account</item>
-        <!-- Ajoutez d'autres options au besoin -->
-    </string-array>
-</resources>
