@@ -6,4 +6,8 @@
     <color name="yellow">#FFFF00</color>
     <color name="dark_blue">#00008B</color>
     <color name="green">#008000</color>
+    <color name="orange">#FFA500</color>
+    <color name="silver">#C0C0C0</color>
+    <color name="grey">#808080</color>
+    <color name="dark_orange">#FF8C00</color>
 </resources>

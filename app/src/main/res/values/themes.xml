@@ -5,5 +5,46 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
+    <style name="Base.Theme.MyApplication" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Primary brand color -->
+        <item name="colorPrimary">#6200EE</item>
+        <item name="colorPrimaryDark">#3700B3</item>
+        <item name="colorOnPrimary">@color/white</item>
+
+        <!-- Secondary brand color -->
+        <item name="colorSecondary">#03DAC5</item>
+        <item name="colorSecondaryFixedDim">#00796B</item>
+        <item name="colorOnSecondary">@color/black</item>
+
+        <!-- Status bar color -->
+        <item name="android:statusBarColor">#000000</item>
+    </style>
+
+    <!-- Theme.MyApplication -->
+    <style name="Theme.MyApplication" parent="Base.Theme.MyApplication" />
+
+    <!-- Default text style -->
+    <style name="DefaultTextStyle">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:fontFamily">@font/caghen</item>
+    </style>
+
+    <!-- Subtitle text style -->
+    <style name="SubTitleTextStyle" parent="DefaultTextStyle">
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- Title text style -->
+    <style name="TitleTextStyle" parent="SubTitleTextStyle">
+        <item name="android:textSize">24sp</item>
+    </style>
+
+    <style name="CustomRatingBar" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressTint">@color/dark_orange</item> <!-- Couleur des étoiles sélectionnées -->
+        <item name="android:progressBackgroundTint">@color/grey</item> <!-- Couleur des étoiles non sélectionnées -->
+    </style>
+
+
     <style name="Theme.Journey" parent="Base.Theme.Journey" />
 </resources>

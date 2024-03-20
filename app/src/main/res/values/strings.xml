@@ -4,6 +4,63 @@
         <item>My travel diary</item>
         <item>Global country rankings</item>
         <item>My account</item>
-        <!-- Ajoutez d'autres options au besoin -->
     </string-array>
+        <!-- Ajoutez d'autres options au besoin -->
+	!-- Page d accueil -->
+    <string name="home_page_title">A découvrir</string>
+    <string name="home_page_favrorite_country_section">Favorite countries</string>
+
+    <!-- Page des pays visités -->
+    <string name="visit_page_title">Pays visités</string>
+
+    <!-- Page d'ajout de pays -->
+    <string name="country_add">Ajout d un pays</string>
+    <string name="country_add_upload_button">Changer Image</string>
+    <string name="country_add_page_name_input">@string/item_country_name</string>
+    <string name="country_add_page_description_input">@string/item_country_description</string>
+
+    <string-array name="country_add_page_affluence">
+        <item>Affluence : Haute</item>
+        <item>Affluence : Moyenne</item>
+        <item>Affluence : Basse</item>
+    </string-array>
+
+    <string-array name="country_add_page_securite">
+        <item>Securite : Viable</item>
+        <item>Securite : Danger</item>
+    </string-array>
+
+    <string name="country_add_upload_confirm_button">Confirmer</string>
+
+
+    <!-- Fenetre Popup de details -->
+    <string name="popup_country_name">Nom Pays</string>
+    <string name="popup_country_description_title">Description</string>
+    <string name="popup_country_description_subtitle">Petite Description</string>
+    <string name="google_map_key">AIzaSyAnc_r9eGv89Arxn9rO2y2fv1dcShU9YRU</string>
+
+
+
+    <!-- Pays customisé -->
+    <string name="item_country_name">Nom du pays</string>
+    <string name="item_country_description">Description du pays</string>
+
+
+    <!-- Page de la liste des pays -->
+    <string name="search">Search</string>
+    <string name="africa">Africa</string>
+    <string name="europe">Europe</string>
+    <string name="north_america">North America</string>
+    <string name="south_america">South America</string>
+    <string name="antarctica">Antarctica</string>
+    <string name="asia">Asia</string>
+    <string name="oceania">Oceania</string>
+    <string name="population">Population :</string>
+    <string name="devise">Currency :</string>
+    <string name="devise_value">Euro</string>
+    <string name="capital">Capital:</string>
+    <string name="capital_value">Paris</string>
+    <string name="population_value">67,081,000</string>
+    <string name="superficie_label">Area :</string>
+    <string name="superficie_value">549,087 km²</string>
 </resources>

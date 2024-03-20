@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.view.View;
 import java.util.List;
 import java.util.ArrayList;
@@ -36,6 +38,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        Button myRankingButton = findViewById(R.id.btn_my_ranking1);
+
         // Récupérer la référence de la WebView
         webView = findViewById(R.id.webView);
 
@@ -45,39 +50,6 @@ public class MainActivity extends AppCompatActivity {
 
         // Charger la carte Leaflet
         webView.loadUrl("file:///android_asset/map.html");
-
-        // Récupérer la référence du Spinner
-        Spinner spinner = findViewById(R.id.spinner);
-
-        // Créer un adaptateur pour le Spinner à partir d'un tableau de ressources
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.spinner_items, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinner.setAdapter(adapter);
-
-        // Définir un écouteur pour le Spinner
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selectedItem = parent.getItemAtPosition(position).toString();
-                switch (selectedItem) {
-                    case "Global country rankings":
-                        // Ouvrir l'activité des classements globaux des pays
-                        startActivity(new Intent(MainActivity.this, RankingsActivity.class));
-                        break;
-                    case "My account":
-                        // Ouvrir l'activité de mon compte
-                        startActivity(new Intent(MainActivity.this, AccountActivity.class));
-                        break;
-                    // Ajoutez d'autres cas au besoin
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                // Faites quelque chose si rien n'est sélectionné
-            }
-        });
 
         // Récupérer la référence du bouton "Plus d'infos"
         infoButton = findViewById(R.id.info_button);
@@ -120,7 +92,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Ouvrir une nouvelle activité
-                Intent intent = new Intent(MainActivity.this, AccountActivity.class);
+                Intent intent = new Intent(MainActivity.this, PopUpActivity.class);
+                intent.putExtra("key_country", selectedCountryName);
                 startActivity(intent);
             }
         });
@@ -135,6 +108,41 @@ public class MainActivity extends AppCompatActivity {
             public void onPageFinished(WebView view, String url) {
                 super.onPageFinished(view, url);
                 colorCountriesOnMap();
+            }
+        });
+
+        // Ajouter un écouteur de clics à la croix
+        ImageView crossIcon = findViewById(R.id.crossIcon);
+        crossIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Vérifier si un pays est sélectionné
+                if (selectedCountryName != null && !selectedCountryName.isEmpty()) {
+                    // Supprimer le pays sélectionné de la liste des pays colorés
+                    removeColoredCountry(selectedCountryName);
+
+                    // Appeler la méthode JavaScript pour décolorer le pays
+                    String javascript = "javascript:colorCountry('" + selectedCountryName + "', 'white')";
+                    webView.loadUrl(javascript);
+
+                    // Effacer le nom du pays sélectionné
+                    TextView countryTextView = findViewById(R.id.selected_country_name);
+                    countryTextView.setText("");
+                    // Cacher le bouton "Plus d'infos"
+                    infoButton.setVisibility(View.GONE);
+                } else {
+                    Toast.makeText(MainActivity.this, "No country selected!", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        myRankingButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Créer un Intent pour passer à la nouvelle activité
+                Intent intent = new Intent(MainActivity.this, RankingsActivity.class);
+
+                // Démarrer la nouvelle activité
+                startActivity(intent);
             }
         });
     }
@@ -242,5 +250,13 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return countries;
+    }
+
+    // Méthode pour supprimer un pays de la liste des pays colorés
+    private void removeColoredCountry(String countryName) {
+        // Supprimer le pays de la liste
+        coloredCountries.removeIf(entry -> entry.startsWith(countryName + ":"));
+        // Enregistrer la liste mise à jour
+        saveColoredCountries(coloredCountries);
     }
 }

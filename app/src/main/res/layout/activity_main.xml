@@ -6,23 +6,40 @@
     tools:context=".MainActivity">
 
     <!-- Barre pour changer de page -->
-    <RelativeLayout
+    <LinearLayout
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="36dp"
-        android:background="#555555">
+        android:layout_height="40dp"
+        android:background="#555555"
+        android:orientation="horizontal">
 
-        <!-- Spinner -->
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_alignParentStart="true"
-            android:layout_alignParentTop="true"
-            android:background="@drawable/menu"
-            android:spinnerMode="dropdown" />
+        <!-- Premier bouton "bouton1" -->
+        <Button
+            android:id="@+id/btn_my_map1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            android:text="My Map"
+            style="@style/MyButtonStyle"/> <!-- Changement de couleur de fond -->
 
-    </RelativeLayout>
+        <!-- Barre noire -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000" />
+
+        <!-- Deuxième bouton "bouton2" -->
+        <Button
+            android:id="@+id/btn_my_ranking1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            style="@style/MyButtonStyle"
+            android:text="My Ranking" /> <!-- Changement de couleur de fond -->
+
+    </LinearLayout>
 
 
     <!-- Bandeau pour le nom du pays sélectionné et le bouton "Plus d'infos" -->
@@ -42,6 +59,7 @@
             android:id="@+id/selected_country_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            style="@style/DefaultTextStyle"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
             android:text="Click on a country !"
@@ -69,9 +87,9 @@
         android:layout_height="36dp"
         android:layout_below="@id/info_layout"
         android:layout_alignParentStart="true"
+        android:layout_marginStart="0dp"
         android:background="#808080"
-        android:gravity="center"
-        android:orientation="horizontal"
+        android:gravity="center_vertical"
         android:paddingStart="16dp"
         android:paddingTop="8dp"
         android:paddingEnd="16dp"
@@ -81,9 +99,10 @@
             android:id="@+id/checkBoxWant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
             android:buttonTint="@color/yellow"
             android:checked="false"
+            style="@style/DefaultTextStyle"
             android:text="Want"
             android:textColor="@android:color/white"
             android:textSize="14sp" />
@@ -92,7 +111,9 @@
             android:id="@+id/checkBoxLived"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            style="@style/DefaultTextStyle"
             android:buttonTint="@color/dark_blue"
             android:checked="false"
             android:text="Lived"
@@ -103,12 +124,36 @@
             android:id="@+id/checkBoxBeen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_weight="1"
+            style="@style/DefaultTextStyle"
             android:buttonTint="@color/green"
             android:checked="false"
             android:text="Been"
             android:textColor="@android:color/white"
             android:textSize="14sp" />
+
+        <!-- Croix cliquable -->
+        <ImageView
+            android:id="@+id/crossIcon"
+            android:layout_width="34dp"
+            android:layout_height="33dp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="0"
+            android:adjustViewBounds="true"
+            android:clickable="true"
+            android:contentDescription="Cross Icon"
+            android:onClick="onCrossIconClicked"
+            android:padding="8dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/cross" />
+
+        <!-- Texte "delete" -->
+
     </LinearLayout>
+
 
     <!-- WebView pour afficher la carte -->
     <WebView

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RankingsActivity">
+
+
+
+    <!-- Barre pour changer de page -->
+    <LinearLayout
+        android:id="@+id/bottom_navigation"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#555555"
+        android:orientation="horizontal">
+
+        <!-- Premier bouton "bouton1" -->
+        <Button
+            android:id="@+id/btn_my_map2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            style="@style/MyButtonStyle"
+            android:text="My Map" /> <!-- Changement de couleur de fond -->
+
+        <!-- Barre noire -->
+        <View
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:background="#000000" />
+
+        <!-- Deuxième bouton "bouton2" -->
+        <Button
+            android:id="@+id/btn_my_ranking2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:textSize="12sp"
+            style="@style/MyButtonStyle"
+            android:text="My Ranking" /> <!-- Changement de couleur de fond -->
+
+    </LinearLayout>
+
+    <!-- ListView pour les classements -->
+    <ListView
+        android:id="@+id/rankings_list_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="@null"
+        style="@style/DefaultTextStyle"
+        android:dividerHeight="0dp" />
+
+</LinearLayout>

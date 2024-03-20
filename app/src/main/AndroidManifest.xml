@@ -15,12 +15,11 @@
         android:theme="@style/Theme.Journey"
         tools:targetApi="31">
 
-        <!-- Déclaration de NewActivity -->
-        <activity android:name=".NewActivity" />
+
+        <activity android:name=".PopUpActivity">
+        </activity>
 
         <activity android:name=".RankingsActivity" />
-
-        <activity android:name=".AccountActivity" />
 
         <!-- Déclaration de MainActivity -->
         <activity android:name=".MainActivity"
